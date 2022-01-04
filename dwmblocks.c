@@ -78,11 +78,14 @@ int gcd(int a, int b)
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
 {
+    /*
 	if (block->signal)
 	{
 		output[0] = block->signal;
 		output++;
 	}
+    */
+
 	char *cmd = block->command;
 	FILE *cmdf = popen(cmd,"r");
 	if (!cmdf){
