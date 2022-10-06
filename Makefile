@@ -1,12 +1,16 @@
 .POSIX:
 
 PREFIX = /usr/local
-CC = gcc
+CC = cc
+CFLAGS = -I/usr/X11R6/include
+
+LDFLAGS += -L/usr/X11R6/lib -I/usr/X11R6/include
+
 
 dwmblocks: dwmblocks.o
-	$(CC) dwmblocks.o -lX11 -o dwmblocks
+	$(CC) ${CFLAGS} ${LDFLAGS} dwmblocks.o -lX11 -o dwmblocks
 dwmblocks.o: dwmblocks.c config.h
-	$(CC) -c dwmblocks.c
+	$(CC) ${CFLAGS} -c dwmblocks.c
 clean:
 	rm -f *.o *.gch dwmblocks
 install: dwmblocks
